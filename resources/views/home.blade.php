@@ -6,8 +6,8 @@
     Snailwhale.wal
 @endsection
 
-{{Html::style('css/owl.theme.default.min.css')}}
-{{Html::style('css/owl.carousel.min.css')}}
+<link rel="stylesheet" href="/public/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/public/css/owl.theme.default.min.css">
 
 @section('header css')
     <style>
@@ -27,23 +27,59 @@
             border-width: 2px;
             border-color: #64d5ca;
             border-radius: 5px;
-            margin-bottom: 20px;
+            margin-top: 150px;
             padding: 25px 50px;
             background-color: #6cb2eb;
         }
     </style>
 @endsection
 
+
 @section('content')
-    <div class="center">
-        <div class="updateBorder">
-            Hello!! This is my first update! This site is still under construction, but there will be more to come soon!
+    <div class="comicCarouselContainer center">
+        <div class="owl-carousel" id="comicCarousel">
+
         </div>
+    </div>
+
+    <div class="animCarouselContainer center">
+
+    </div>
+
+    <div class="gameCarouselContainer center">
+
+    </div>
+
+    <div class="updateBorder center">
+        Hello!! This is my first update! This site is still under construction, but there will be more to come soon!
     </div>
 @endsection
 
 @section('footer-script')
-    {{Html::script('js/jquery-3.4.0.min.js')}}
+    <script src="/public/js/jquery-3.4.0.min.js"></script>
+    <script src="/public/js/owl.carousel.min.js"></script>
+    <script>
+        $('#comicCarousel').owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:3,
+                    nav:false
+                },
+                1000:{
+                    items:5,
+                    nav:true,
+                    loop:false
+                }
+            }
+        })
+    </script>
 
 
 @endsection
