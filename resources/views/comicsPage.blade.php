@@ -8,9 +8,8 @@
 @section('header css')
 	<style>
 		/* SLIDESHOW CSS */
-			
+
         * {box-sizing: border-box}
-        body {font-family: Verdana, sans-serif; margin:0}
         .mySlides {display: none}
         img {vertical-align: middle;}
 
@@ -68,7 +67,7 @@
             from {opacity: .4}
             to {opacity: 1}
         }
-	
+
 		/* THUMBNAIL GALLERY CSS */
 
 		div.center
@@ -80,8 +79,8 @@
 			font-size: 16px;
 			font-style: oblique;
 		}
-		
-		div.ThumbnailGallery 
+
+		div.ThumbnailGallery
 		{
 			margin: 15px;
 			border: 1px solid #ccc;
@@ -91,31 +90,31 @@
 			overflow: hidden;
 		}
 
-		div.ThumbnailGallery:hover 
+		div.ThumbnailGallery:hover
 		{
 			border: 1px solid #777;
 		}
 
-		div.Thumbnail img 
+		div.Thumbnail img
 		{
 			width: 100%;
 			height: auto;
 		}
 
-		div.desc 
+		div.desc
 		{
 			padding: 5px;
 			text-align: center;
 			font-size: 12px;
 			color: #3EA99F;
 		}
-		
+
 		div.center-cropped
 		{
 			height: 100px;
 			overflow:hidden;
 		}
-		
+
 		div.center-cropped img
 		{
 			height: 100%;
@@ -130,49 +129,17 @@
 
 <!-- defines page content -->
 @section('content')
-	
+
 <!-- THUMBNAIL GALLERY HTML -->
 	@foreach($comics as $comic)
-		@include('lightBox', array('images'=>$comic['images']))
+		@include('lightBox', array('name' => $comic['name'], 'images' => $comic['images']))
 	@endforeach
 	<div class="center">
 		@foreach($comics as $comic)
-			<div class="ThumbnailGallery" onclick='openModal();currentSlide(1)'>
+			<div class="ThumbnailGallery" onclick='openModal("{!! $comic['name'] !!}"); currentSlide("{!! $comic['name'] !!}", 1);'>
 				<div class="center-cropped"> <img src="{!! $comic['file'] !!}" alt="" /> </div>
 				<div class="desc">{!! $comic['name'] !!}</div>
 			</div>
 		@endforeach
 	</div>
-@endsection
-
-@section('footer script')
-<script>
-    <!-- SLIDESHOW SCRIPT -->
-	var slideIndex = 1;
-	showSlides(slideIndex);
-	<!-- adds slides to slideshow -->
-	function plusSlides(n)
-	{
-		showSlides(slideIndex += n);
-	}
-	<!-- displays the image with the referenced numeric value -->
-	function currentSlide(n)
-	{
-		showSlides(slideIndex = n);
-	}
-	
-	function showSlides(n)
-	{
-		var i;
-		var slides = document.getElementsByClassName("mySlides");
-		if (n > slides.length) {slideIndex = 1}    
-		if (n < 1) {slideIndex = slides.length}
-		for (i = 0; i < slides.length; i++)
-		{
-			slides[i].style.display = "none";  
-		}
-		slides[slideIndex-1].style.display = "block";  
-		dots[slideIndex-1].className += " active";
-	}
-</script> 
 @endsection

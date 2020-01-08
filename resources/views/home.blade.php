@@ -6,9 +6,6 @@
     Snailwhale.wal
 @endsection
 
-<link rel="stylesheet" href="/public/css/owl.carousel.min.css">
-<link rel="stylesheet" href="/public/css/owl.theme.default.min.css">
-
 @section('header css')
     <style>
         div.center
@@ -56,8 +53,6 @@
 @endsection
 
 @section('footer-script')
-    <script src="/public/js/jquery-3.4.0.min.js"></script>
-    <script src="/public/js/owl.carousel.min.js"></script>
     <script>
         $('#comicCarousel').owlCarousel({
             loop:true,

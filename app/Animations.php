@@ -8,6 +8,6 @@ class Animations extends Model
 {
 	public $table = 'animations';
     public $fillable = [
-		'name', 'file', 'id'
+		'name', 'file'
 	];
 }

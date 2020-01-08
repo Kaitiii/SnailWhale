@@ -10,8 +10,9 @@
 		<!-- referencing style sheet -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Bonbon|Molle:400i|Pacifico|Patrick+Hand|Permanent+Marker|Ruge+Boogie" rel="stylesheet">
-		<link rel="stylesheet" href="/public/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="/public/css/owl.theme.default.min.css">
+		<link rel="stylesheet" href="/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+		<link rel="stylesheet" href="/css/style.css">
 
 		{{--font-family: 'Pacifico', cursive;--}}
 		{{--font-family: 'Permanent Marker', cursive;--}}
@@ -22,74 +23,7 @@
 
 
 		@yield('header css')
-	
-        <!-- Styles -->
-		<style>
-			.centeredImage{
-                display     :  block;
-                margin-left : auto;
-				margin-right: auto;
-			}
-			.gradient {
-				background: linear-gradient(#008B8B, #00008B);
-				background-repeat: no-repeat;
-				background-attachment: fixed;
-			}
-			.buttonHeadContainer {
-				text-align: center;
-				margin-top: 15px;
-			}
-			.buttonHead{
-				display: inline-block;
-			}
-			.spacer {
-				margin-left: 12px;
-			}
-			.contentContainer {
-				margin-top: 25px;
-			}
-			.buttonContainer {
-				display: inline-block;
-				width: 120px;
-				height: 80px;
-			}
-			.buttonText {							
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-			}
-			.textContainer{
-				position: relative;
-			}
-			.center {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				font-size: 16px;
-				font-style: oblique;
-			}
-			h1{
-				font-family: 'Pacifico', cursive;
-				text-align: center;
-				margin-top: 35px;
-				font-size: 55px;
-                background: -webkit-linear-gradient(#bbfffc, #097369fc);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-			}
-            #indexGif
-            {
-                width:100px;
-                height:80px;
-            }
-            #buttons
-            {
-                width:100%;
-                height:100%;
-            }
-		</style>
+
     </head>
     <body class='gradient'>
 		<!-- index button -->
@@ -130,13 +64,13 @@
 		</div>
 		<!-- defines content -->
 		@yield('content')
-		
+
     </body>
 	<!-- defines script -->
 	@yield('footer script')
 
-	<script src="/public/js/jquery-3.4.0.min.js"></script>
-	<script src="/public/js/owl.carousel.min.js"></script>
+	<script src="/js/jquery-3.4.0.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
 
 	<!-- allows buttons to take user to respective pages when clicked -->
 	<script>

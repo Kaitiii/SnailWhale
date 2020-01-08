@@ -3,21 +3,21 @@
 	{
 		padding: 0 8px;
 	}
-	
+
 	.row:after
 	{
 		content: "";
 		display: table;
 		clear: both;
 	}
-	
+
 	/* Create four equal columns that floats next to eachother */
 	.column
 	{
 		float: left;
 		width: 25%;
 	}
-	
+
 	/* The Modal (background) */
 	.modal
 	{
@@ -32,7 +32,7 @@
 		overflow: auto;
 		background-color: black;
 	}
-	
+
 	/* Modal Content */
 	.modal-content
 	{
@@ -43,9 +43,9 @@
 		width: 90%;
 		max-width: 1200px;
 	}
-	
+
 	/* The Close Button */
-	.close 
+	.close
 	{
 		color: white;
 		position: absolute;
@@ -54,7 +54,7 @@
 		font-size: 35px;
 		font-weight: bold;
 	}
-	
+
 	.close:hover,
 	.close:focus
 	{
@@ -62,16 +62,16 @@
 		text-decoration: none;
 		cursor: pointer;
 	}
-	
+
 	/* Hide the slides by default */
-	.mySlides 
+	.mySlides
 	{
 		display: none;
 	}
-	
+
 	/* Next & previous buttons */
 	.prev,
-	.next 
+	.next
 	{
 		cursor: pointer;
 		position: absolute;
@@ -87,21 +87,21 @@
 		user-select: none;
 		-webkit-user-select: none;
 	}
-	
+
 	/* Position the "next button" to the right */
-	.next 
+	.next
 	{
 		right: 0;
 		border-radius: 3px 0 0 3px;
 	}
-	
+
 	/* On hover, add a black background color with a little bit see-through */
 	.prev:hover,
 	.next:hover
 	{
 		background-color: rgba(0, 0, 0, 0.8);
 	}
-	
+
 	/* Number text (1/3 etc) */
 	.timeText
 	{
@@ -111,7 +111,7 @@
 		position: absolute;
 		top: 0;
 	}
-	
+
 	/* Caption text */
 	.caption-container
 	{
@@ -120,24 +120,24 @@
 		padding: 2px 16px;
 		color: white;
 	}
-	
+
 	img.demo
 	{
 		opacity: 0.6;
 	}
-	
+
 	.active,
 	.demo:hover
 	{
 		opacity: 1;
 	}
-	
+
 	img.hover-shadow
 	{
 		transition: 0.3s;
 	}
-	
-	.hover-shadow:hover 
+
+	.hover-shadow:hover
 	{
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
@@ -145,22 +145,22 @@
 
 
 <!-- The Modal/Lightbox -->
-<div id="myModal" class="modal">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
+<div id="myModal" class="modal" data-name="{!! $name !!}">
+  <span class="close cursor" onclick="closeModal('{!! $comic['name'] !!}')">&times;</span>
   <div class="modal-content">
 
 @foreach($images as $image)
-    <div class="mySlides">
+    <div class="mySlides" data-name="{!! $name !!}">
       <!--<div class="timeText">1 / 4</div>-->
       <img src="{!! $image !!}" style="width:100%">
     </div>
 @endforeach
 
     <!-- Next/previous controls -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <a class="prev" onclick="plusSlides('{!! $comic['name'] !!}', -1)">&#10094;</a>
+    <a class="next" onclick="plusSlides('{!! $comic['name'] !!}', 1)">&#10095;</a>
 
-    <!-- Caption text 
+    <!-- Caption text
     <div class="caption-container">
       <p id="caption"></p>
     </div>-->
@@ -169,34 +169,35 @@
 
 <script>
 	// Open the Modal
-	function openModal() {
-	    document.getElementById('myModal').style.display = "block";
+	function openModal(name)
+	{
+	    document.querySelector('.modal[data-name="' + name + '"]').style.display = "block";
 	}
-	
+
 	// Close the Modal
-	function closeModal() {
-	    document.getElementById('myModal').style.display = "none";
+	function closeModal(name)
+	{
+	    document.querySelector('.modal[data-name="' + name + '"]').style.display = "none";
 	}
-	
+
 	var slideIndex = 1;
-	showSlides(slideIndex);
-	
+
 	// Next/previous controls
-	function plusSlides(n)
+	function plusSlides(name, n)
 	{
-		showSlides(slideIndex += n);
+		showSlides(name, slideIndex += n);
 	}
-	
+
 	// Thumbnail image controls
-	function currentSlide(n)
+	function currentSlide(name, n)
 	{
-		showSlides(slideIndex = n);
+		showSlides(name, slideIndex = n);
 	}
-	
-	function showSlides(n)
+
+	function showSlides(name, n)
 	{
 		var i;
-		var slides = document.getElementsByClassName("mySlides");
+		var slides = document.querySelectorAll('.mySlides[data-name="' + name + '"]');
 	    // var captionText = document.getElementById("caption");
 		if (n > slides.length) {slideIndex = 1}
 		if (n < 1) {slideIndex = slides.length}
